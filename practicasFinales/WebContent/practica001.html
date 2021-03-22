@@ -4,8 +4,15 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style type="text/css">
-
-
+#boton{
+	margin:1em;
+	background-color:tomato;
+	color:white;
+}
+#boton:hover{
+	background-color:beige;
+	color:tomato;
+}
 html {
 	scroll-behavior: smooth;
 }
@@ -15,11 +22,10 @@ html {
   	-moz-background-size: cover;
   	-o-background-size: cover;
  	background-size: cover;
- 	widht
+ 	height: 100vh;
 }
-.contenedor-imagen {
-	height: 100vh;
-}
+
+
 
 .contenedor-imagen img {
 	width: 100%;
@@ -87,6 +93,48 @@ aside .indice a:hover {
 #inputUsuario{
 	margin-bottom:1em;
 }
+#formulario {
+  width: calc(100% - 2em);
+  color: #555;
+  padding: 1em;
+}
+#sidebar {
+  position: fixed;
+  top: 3%;
+  bottom: 3%;
+  left: 100%;
+  width: 40%;
+  z-index: 1;
+  background: tomato;
+  margin-right: -304px;
+  padding: 20px;
+  color: black;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .5);
+}
+
+#mostrarFormulario:checked ~ #formulario #sidebar {
+  left: 50%;
+}
+
+#nuevo-articulo {
+	display: flex;
+	flex-direction: column;
+}
+textarea {
+	min-height: 10em;
+	resize: vertical;
+}
+.button {
+  font-weight: bold;
+  text-align: center;
+  padding: 0 8px;
+  min-width: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+  background: beige;
+}
+#anadir{
+	background-color:beige;
+}
 </style>
 </head>
 <body>
@@ -103,7 +151,20 @@ aside .indice a:hover {
 	</nav>
 	
 </header>
-
+<input type="checkbox" id="mostrarFormulario" hidden></input>
+<div id="formulario">
+    <div id="sidebar">
+        <label for="mostrarFormulario" class="button">x</label>
+        <h3>Nuevo Artículo</h3>
+        <form id="nuevo-articulo">
+        	<label for="titulo">Título</label>
+        	<input id="titulo" type="text" form="nuevo-articulo"></input>
+        	<label for="art-contenido">Contenido</label>
+        	<textarea id="art-contenido" form="nuevo-articulo"></textarea>
+        	<span onclick="nuevoArticulo()" id='anadir'>Añadir</span>
+        </form>
+    </div>
+</div>
 <main>
 	<aside>
 		<h3 class="titulo">Temas</h3>
@@ -112,12 +173,15 @@ aside .indice a:hover {
 				<a href="#articulo2">Articulo #2</a>
 				<a href="#articulo3">Articulo #3</a>
 				<a href="#articulo4">Articulo #4</a>
+				<label for="mostrarFormulario" class="button">Nuevo artículo</label>
 			</nav>
 	</aside>
-	<section>
+	<section id='seccion'>
 	<div id='articulo1'>
 		<h1>Artículo #1</h1>
 		<p>Publicado el 4 de marzo de 2021</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
 		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
 		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
 		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
@@ -130,6 +194,8 @@ aside .indice a:hover {
 	<div id='articulo2'>
 		<h1>Artículo #2</h1>
 		<p>Publicado el 5 de marzo de 2020</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
 		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
 		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
 		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
@@ -142,6 +208,8 @@ aside .indice a:hover {
 	<div id='articulo3'>
 		<h1>Artículo #3</h1>
 		<p>Publicado el 4 de enero de 2020</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
 		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
 		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
 		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
@@ -154,6 +222,8 @@ aside .indice a:hover {
 	<div id='articulo4'>
 		<h1>Artículo #4</h1>
 		<p>Publicado el 4 de diciembre de 2019</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
 		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
 		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
 		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
@@ -163,21 +233,27 @@ aside .indice a:hover {
 		recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de 
 		Lorem Ipsum.</p>
 	</div>
-	<div id='bloqueUsuario'>
-		<h2>Escriba aquí su artículo!</h2>
-		<input id='inputUsuario' type='textarea'>
-		<button id='boton'>Crear artículo</button>
-	</div>
 	</section>
 </main>
 <script>
+var boton = document.getElementById('anadir');
+boton.addEventListener('click',crearArticulo);
 
-function crearArticulo {
-	var textoNuevo = document.getElementById('inputUsuario').value;
-	var divNuevo = document.createElement('div')
-	var h1nuevo = document.createElement('h1')
-	h1nuevo.textContent = 'Artículo #5'
-	divNuevo.appendChild(h1nuevo)
+var seccion = document.getElementById('seccion');
+var main = document.getElementsByTagName('main');
+var ultimo = document.getElementById('articulo4');
+var contador = 5;
+function crearArticulo () {
+  var newDiv = document.createElement("div");
+  var h1 = document.createElement("h1");
+  var texto = document.createElement("p");
+  var contenido = document.getElementById('art-contenido').value;
+  var titulo = document.getElementById('titulo').value;
+  texto.innerHTML = contenido;
+  h1.innerHTML = titulo
+  newDiv.appendChild(h1);
+  newDiv.appendChild(texto);
+  seccion.appendChild(newDiv); 
 }
 
 </script>
