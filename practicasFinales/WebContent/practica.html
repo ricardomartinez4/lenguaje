@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+progresivo - jpeg:
+	imagemagick
+	convert photo-1497215728101-856f4ea42174.jpeg -interlace plane salida.jpg
+
+html {
+	scroll-behavior: smooth;
+}
+.contenedor-imagen {
+	height: 60vh;
+	background-image: url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-origin: border-box;
+	/* background-position: center center; */
+	background-size: content;	
+	/* */
+    animation: animacionImagen 100s;
+    animation-timing-function: linear;
+  	animation-iteration-count: infinite;
+}
+@keyframes animacionImagen {
+    0% { background-position: 0% 35%; }
+  	50% { background-position: center 75%; }
+  	100% { background-position: 0% 35%; }
+}
+#seccion {
+	display: flex;
+	flex-direction: column;
+}
+.contenedor-imagen img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
+}
+html {
+		/* ------------- Ir a los artículo de manera suave */
+	scroll-behavior: smooth;
+}
+
+#menu {
+	display:flex;
+	background-color:#49C4DA;
+	justify-content:space-between;
+	margin:auto;
+}
+a{
+	padding:10px;
+	text-decoration:none;
+	color:white;
+	outline: none;
+}
+a:hover{
+	background-color:#17A1B9;
+	color:white;
+}
+
+
+main {
+	max-width: 1000px;
+	width: 90%;
+	margin: auto;
+	/* -------------- */
+	display: flex;
+}
+aside {
+	min-width:15%;
+	margin: 40px 20px 20px 0;
+		/*--- para el sticky fundamental */
+	height: 100%;
+		/* --- */
+		/* --- */
+	position: sticky;
+	top: 20px;
+		/* --- */
+	background: #1D2F3D;
+	padding: 20px;
+	border-radius: 3px;
+}
+aside > nav {
+	flex-direction: column;
+}
+main > aside {
+	flex:-1;
+}
+footer .navbar {
+	position: sticky;
+	bottom: 0;
+}
+aside .titulo {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: normal;
+	font-size: 24px;
+	margin:1em;
+	color: white;
+}
+
+aside .indice a {
+	display: flex;
+	flex-direction:column;
+	margin:1em;
+	color: #49C4DA;
+	background-color:white;
+}
+
+#inputUsuario{
+	margin-bottom:1em;
+}
+#formulario {
+  width: calc(100% - 2em);
+  color: #555;
+  padding: 1em;
+}
+#sidebar {
+  position: fixed;
+  top: 3%;
+  bottom: 3%;
+  left: 100%;
+  width: 40%;
+  z-index: 1;
+  background: #49C4DA;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .5);
+  transition: left 0.5s;
+}
+#sidebar > h3 {
+	text-align:center;
+}
+#mostrarFormulario:checked ~ #formulario #sidebar {
+  left: 50%;
+  transition:0.5s;
+}
+
+#nuevo-articulo {
+	display: flex;
+	flex-direction: column;
+}
+textarea {
+	min-height: 10em;
+	resize: vertical;
+}
+.button {
+  font-weight: bold;
+  text-align: center;
+  padding: 0 8px;
+  min-width: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+  background: #17A1B9;
+}
+#anadir{
+	background-color:#17A1B9;
+	margin:1em;
+	text-align:center;
+	widht:100px;
+}
+#anadir:hover{
+	background-color:white;
+	color:#17A1B9;
+	margin:1em;
+	text-align:center;
+	cursor:pointer;
+	transition:0.5s;
+}
+
+header > nav {
+	top: 0;
+}
+footer > nav{
+	bottom:0;
+}
+@media screen and (max-width: 576px) {
+  main {
+    flex-direction: column;
+ }
+ aside{
+ 	position:static;
+ }
+ }
+#nuevoArt:hover{
+	background-color:white;
+	color:#49C4DA;
+	transition:0.5s;
+	cursor:pointer;
+}
+.img-up{
+	cursor:pointer;
+}
+.img-down{
+	cursor:pointer;
+}
+.img-rem{
+	cursor:pointer;
+}
+.borrado{
+	cursor:pointer;
+}
+.contenedor{
+	display:flex;
+}
+.contenedor > img {
+	align-items: flex-start;
+	margin:1em;
+}
+.contenedor > img:hover {
+	transform:scale(1.10);
+	box-shadow: 5px 6px 3px grey;
+}
+
+</style>
+</head>
+<body>
+<header>
+	<nav class="navbar">
+		<div id='menu'>
+			<a href='#'>Inicio</a>
+			<a href='#'>Servicios</a>
+			<a href='#'>Precios</a>
+			<a href='#'>Compañía</a>
+			<a href='#'>Soporte</a>
+		</div>
+		<div class="contenedor-imagen"></div>
+	</nav>
+	
+</header>
+<input type="checkbox" id="mostrarFormulario" hidden></input>
+<div id="formulario">
+    <div id="sidebar">
+        <label for="mostrarFormulario" class="button">x</label>
+        <h3>Nuevo artículo</h3>
+        <form id="nuevo-articulo">
+        	<label for="titulo">Título</label>
+        	<input id="titulo" type="text" form="nuevo-articulo"></input>
+        	<label for="art-contenido">Contenido</label>
+        	<textarea id="art-contenido" form="nuevo-articulo"></textarea>
+        	<div onclick="nuevoArticulo()" id='anadir'>Añadir</div>
+        </form>
+    </div>
+</div>
+<main>
+	<aside id='main-aside'>
+		<h3 class="titulo">Temas</h3>
+			<nav class="indice">
+				<label for="mostrarFormulario" id='nuevoArt' class="button">Nuevo artículo</label>
+			</nav>
+	</aside>
+	<section id='seccion'>
+	<article id='articulo1'>
+		<h1>Artículo #1</h1>
+		<p>Publicado el 4 de marzo de 2021</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
+		<img class="borrado" onclick="borrarArticulo(this)" src= "../img/icons8-basura.gif" height="25px" width="25px">
+		<div class='contenedor'>
+		<img src="../img/imagen003.jpg" height="200px" width="300px">
+		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
+		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
+		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
+		manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó 
+		como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado 
+		en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más 
+		recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de 
+		Lorem Ipsum.</p>
+		</div>
+	</article>
+	<article id='articulo2'>
+		<h1>Artículo #2</h1>
+		<p>Publicado el 5 de marzo de 2020</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
+		<img class="borrado" onclick="borrarArticulo(this)" src= "../img/icons8-basura.gif" height="25px" width="25px">
+		<div class='contenedor'>
+		<img src="../img/imagen004.jpg" height="200px" width="300px">
+		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
+		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
+		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
+		manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó 
+		como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado 
+		en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más 
+		recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de 
+		Lorem Ipsum.</p>
+		</div>
+	</article>
+	<article id='articulo3'>
+		<h1>Artículo #3</h1>
+		<p>Publicado el 4 de enero de 2020</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
+		<img class="borrado" onclick="borrarArticulo(this)" src= "../img/icons8-basura.gif" height="25px" width="25px">
+		<div class='contenedor'>
+		<img src="../img/imagen005.jpg" height="200px" width="300px">
+		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
+		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
+		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
+		manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó 
+		como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado 
+		en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más 
+		recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de 
+		Lorem Ipsum.</p>
+		</div>
+	</article>
+	<article id='articulo4'>
+		<h1>Artículo #4</h1>
+		<p>Publicado el 4 de diciembre de 2019</p>
+		<img class="img-up" onclick="moverArticulo(this, 1)" src= "../img/ios-arrow-up.svg" height="24px" width="24px">
+		<img class="img-down" onclick="moverArticulo(this, 0)"  src= "../img/ios-arrow-down.svg" height="24px" width="24px">
+		<img class="borrado" onclick="borrarArticulo(this)" src= "../img/icons8-basura.gif" height="25px" width="25px">
+		<div class='contenedor'>
+		<img src="../img/imagen006.jpg" height="200px" width="300px">
+		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
+		Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor 
+		(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal 
+		manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó 
+		como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado 
+		en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más 
+		recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de 
+		Lorem Ipsum.</p>
+	
+		</div>
+	</article>
+	</section>
+</main>
+<footer>
+	<div class="contenedor-imagen">
+			<img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="">
+		</div>
+	<nav class="navbar">
+		<div id='menu'>
+			<a href='#'>Inicio</a>
+			<a href='#'>Servicios</a>
+			<a href='#'>Precios</a>
+			<a href='#'>Compañía</a>
+			<a href='#'>Soporte</a>
+		</div>
+	</nav>
+</footer>
+<script>
+var articulos = document.getElementsByTagName('article');
+for (var i = 0; i < articulos.length; i++){
+	articulos[i].style.order = i + 1;
+}
+
+var boton = document.getElementById('anadir');
+boton.addEventListener('click',crearArticulo);
+
+indiceDinamico();
+
+
+
+function crearArticulo () {
+  var seccion = document.getElementById('seccion');
+  var newArt = document.createElement("article");
+  var h1 = document.createElement("h1");
+  var texto = document.createElement("p");
+  var contenido = document.getElementById('art-contenido').value;
+  var titulo = document.getElementById('titulo').value;
+  texto.innerHTML = contenido;
+  h1.innerHTML = titulo
+  newArt.appendChild(h1);
+  newArt.appendChild(texto);
+  seccion.appendChild(newArt);
+  
+  var indice = document.getElementsByClassName('indice')[0];
+  var enlace = document.createElement('a');
+  enlace.href= '#' + titulo;
+  enlace.textContent = titulo;
+  indice.appendChild(enlace);
+}
+
+function indiceDinamico(){
+	var aside = document.getElementsByTagName('aside');
+	var indice = document.getElementsByClassName('indice')[0];
+	var articulos = document.getElementsByTagName('article');
+	
+	for (i = 0; i < articulos.length; i++){
+		
+		var enlace = document.createElement('a');
+		
+		enlace.href= '#' + articulos[i].children[0].textContent;
+		enlace.textContent = articulos[i].children[0].textContent;	
+		indice.appendChild(enlace);
+	}
+}
+function borrarArticulo(x){
+	var seccion = document.getElementById('seccion');
+	var articulo = x.parentNode;
+	seccion.removeChild(articulo);
+	
+	
+}
+
+
+
+</script>
+</body>
+</html>
